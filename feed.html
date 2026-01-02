@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UZXANLU Feed | Muhokama</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0; padding: 0;
+            background: url('02.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+            color: white;
+        }
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); z-index: -1;
+        }
+        .feed-container {
+            max-width: 500px; margin: auto; padding: 15px;
+        }
+        /* Post yaratish oynasi */
+        .create-post {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 15px; margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .create-post textarea {
+            width: 100%; background: transparent; border: none;
+            color: white; font-size: 16px; resize: none; outline: none;
+        }
+        .post-actions {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;
+        }
+        .icon-btn { color: #00ff00; cursor: pointer; font-size: 18px; }
+        .post-btn {
+            background: #00ff00; color: black; border: none;
+            padding: 8px 20px; border-radius: 20px; font-weight: bold;
+        }
+
+        /* Postlar ko'rinishi */
+        .post-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px; padding: 15px; margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .post-header { display: flex; align-items: center; margin-bottom: 10px; }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; border: 2px solid #00ff00; }
+        .post-content { font-size: 15px; line-height: 1.5; margin-bottom: 10px; }
+        .post-image { width: 100%; border-radius: 15px; margin-bottom: 10px; }
+        
+        /* Like, Comment tugmalari */
+        .engagement {
+            display: flex; gap: 20px; border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px; color: #aaa;
+        }
+        .eng-item { cursor: pointer; transition: 0.3s; }
+        .eng-item:hover { color: #00ff00; }
+        .eng-item i { margin-right: 5px; }
+
+        .back-nav { padding: 10px; color: #00ff00; text-decoration: none; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <div class="feed-container">
+        <a href="index.html" class="back-nav"><i class="fas fa-arrow-left"></i> Asosiy sahifa</a>
+
+        <div class="create-post">
+            <textarea placeholder="Nimalarni o'ylayapsiz, Alixan?" rows="3"></textarea>
+            <div class="post-actions">
+                <div>
+                    <i class="fas fa-image icon-btn"></i>
+                    <i class="fas fa-video icon-btn" style="margin-left: 15px;"></i>
+                </div>
+                <button class="post-btn">Ulashish</button>
+            </div>
+        </div>
+
+        <div class="post-card">
+            <div class="post-header">
+                <img src="profile.jpg" class="user-avatar">
+                <div>
+                    <div style="font-weight: bold;">Alixan <i class="fas fa-check-circle" style="color: #1DA1F2; font-size: 12px;"></i></div>
+                    <div style="font-size: 12px; color: #888;">Hozirgina</div>
+                </div>
+            </div>
+            <div class="post-content">
+                Mobil-dasturchi yo'nalishi bu faqat kod yozish emas, bu erkinlik! 🚀 Mana mening yangi loyiham ustidagi ishlarim:
+            </div>
+            <img src="01.jpg" class="post-image">
+            <div class="engagement">
+                <div class="eng-item"><i class="far fa-heart"></i> 124</div>
+                <div class="eng-item"><i class="far fa-comment"></i> 45</div>
+                <div class="eng-item"><i class="fas fa-share"></i></div>
+            </div>
+        </div>
+
+        <div id="disqus_thread" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px;"></div>
+    </div>
+
+    <script>
+        var disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = 'feed_page';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://uzxanlu.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+</body>
+</html>
